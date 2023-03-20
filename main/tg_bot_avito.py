@@ -1,27 +1,27 @@
-from config import tg_bot_token
+import os
+import json
 import datetime
+
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
 from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
-import os
-import json
 import urllib.request
 import pytesseract
 from PIL import Image
-import pprint
+
+from config import tg_bot_token
+
 
 bot = Bot(token=tg_bot_token)
 dp = Dispatcher(bot)
-
 
 @dp.message_handler(commands=["start"])
 async def star_comand(message: types.Message):
     await message.reply("Привет! Я выгружаю с авито объявления по поиску земли по Ярославскому шоссе до 10 соток и до "
                         "2 млн. рублей. Напиши сколько последних объявлений (от 2 до 50) выгрузить и увидишь результат")
-
 
 @dp.message_handler()
 async def get_avito_ad(message: types.Message):
